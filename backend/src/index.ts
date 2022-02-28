@@ -1,49 +1,42 @@
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer } from "apollo-server";
+import { typeDefs } from "./schema";
+import { policies } from "./mockData";
 
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+// Custom Date Scalar from Docs - https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/ + including Typescript
 
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
-  }
+const { GraphQLScalarType, Kind } = require("graphql");
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
+const dateScalar = new GraphQLScalarType({
+  name: "Date",
+  description: "Date custom scalar type",
+  serialize(value: Date): Number {
+    return value.getTime(); // Convert outgoing Date to integer for JSON
   },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
+  parseValue(value: Number): Date {
+    return new Date(value as string | number | Date); // Convert incoming integer to Date
   },
-];
+  parseLiteral(ast: any) {
+    if (ast.kind === Kind.INT) {
+      return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
+    }
+    return null; // Invalid hard-coded value (not an integer)
+  },
+});
 
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
+  Date: dateScalar,
   Query: {
-    books: () => books,
+    policies() {
+      return policies;
+    },
+    policy(args: any) {
+      return policies.find((policy) => policy.id === args.id);
+    },
   },
 };
 
-// The ApolloServer constructor requires two parameters: your schema
-// definition and your set of resolvers.
 const server = new ApolloServer({ typeDefs, resolvers });
 
-// The `listen` method launches a web server.
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
