@@ -26,10 +26,10 @@ const dateScalar = new GraphQLScalarType({
 const resolvers = {
   Date: dateScalar,
   Query: {
-    policies() {
+    getPolicies: () => {
       return policies;
     },
-    policy(args: any) {
+    getPolicy: (args: any) => {
       return policies.find((policy) => policy.id === args.id);
     },
   },

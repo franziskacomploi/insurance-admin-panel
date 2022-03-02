@@ -36,7 +36,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    policies: [Policy]
-    policy(id: ID!): Policy
+    getPolicies: [Policy]
+    getPolicy(id: ID!): Policy
   }
 `;

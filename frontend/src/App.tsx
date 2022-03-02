@@ -1,7 +1,23 @@
 import "./index.css";
+import {
+  ApolloProvider,
+  InMemoryCache,
+  ApolloClient,
+  NormalizedCacheObject,
+} from "@apollo/client";
+import Routing from './routes/index';
 
-function App() {
-  return <h1 className="text-3xl">Fullstack code challenge</h1>;
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  cache: new InMemoryCache(),
+  uri: 'http://localhost:4000/graphql',
+});
+
+const App = () => {
+  return (
+    <ApolloProvider client={client}>
+      <Routing />
+    </ApolloProvider>
+  );
 }
 
 export default App;
