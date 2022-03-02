@@ -6,7 +6,27 @@ The [frontend](./frontend) part would communicate with the [backend](./backend) 
 
 We've generated some boilerplate for you to get started.
 
-## What we'll be looking at
+## Solution
+
+Part 1
+
+- Initially I started to setup the graphQL server on localhost:4000. For that I included a schema that corresponds to the data structure.
+- Afterwards I checked that the Apollo Server is running.
+- To work with data, some sample data was created.
+
+Part 2
+
+- Setting up the Query for the Frontend was next. To be able to use the sample data in the frontend, I setup the Apollo client and served it to the ApolloProvider.
+- Then I queried the data, using the GraphQL Explorer
+  ![Alt text](./process/Bildschirmfoto 2022-03-02 um 19.48.36.png?raw=true "Optional Title")
+
+Part 3
+
+- Frontend is getting polished 🚀
+
+## Task
+
+### What we'll be looking at
 
 - How you write idiomatic code.
 - How you deal with UI/UX.
@@ -16,7 +36,7 @@ We've generated some boilerplate for you to get started.
 - How you deal with the security concerns.
 - How you communicate with your fellow programmers.
 
-## Tasks
+### Tasks
 
 1. On the [backend](./backend), change the GraphQL schema to reflect the [Data structure](#Data-structure)
 2. On the [frontend](./frontend), fetch the data returned by the GraphQL endpoint with the help of the [Apollo client](https://www.apollographql.com)
@@ -29,12 +49,12 @@ We've generated some boilerplate for you to get started.
 5. (Bonus) Authenticate admins using login/password
 6. (Bonus) Create more screens (e.g. customer profile, policy page…)
 
-## Data structure
+### Data structure
 
 To make it all work, you have to define a [GraphQL schema first](https://www.apollographql.com/docs/apollo-server/schema/schema/). No need to back it with a real database, however this would make sense to demonstrate the "edit" function.
 Each policy should have at least the following fields:
 
-### Policy
+#### Policy
 
 | fields         | type                            | comment                                       |
 | -------------- | ------------------------------- | --------------------------------------------- |
@@ -47,7 +67,7 @@ Each policy should have at least the following fields:
 | endDate        | date                            | Date when the policy ends                     |
 | createdAt      | date                            | Date when the record was created              |
 
-### Customer
+#### Customer
 
 | fields      | type   | comment                  |
 | ----------- | ------ | ------------------------ |
@@ -55,10 +75,10 @@ Each policy should have at least the following fields:
 | lastName    | string | Customer’s last name     |
 | dateOfBirth | date   | Customer’s date of birth |
 
-### InsuranceType
+#### InsuranceType
 
 InsuranceType can be of `Liability`, `Household`, `Health`
 
-### PolicyStatus
+#### PolicyStatus
 
 PolicyStatus can be of `Active`, `Pending`, `Cancelled` and `Dropped out`
