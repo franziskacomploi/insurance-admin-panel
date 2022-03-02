@@ -18,7 +18,7 @@ Part 2
 
 - Setting up the Query for the Frontend was next. To be able to use the sample data in the frontend, I setup the Apollo client and served it to the ApolloProvider.
 - Then I queried the data, using the GraphQL Explorer
-  ![Alt text](./process/Bildschirmfoto 2022-03-02 um 19.48.36.png?raw=true "Optional Title")
+  [GraphQL Explorer](https://postimg.cc/YvgW4xvF)
 
 Part 3
 
