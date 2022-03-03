@@ -24,7 +24,7 @@ const dateScalar = new GraphQLScalarType({
 });
 
 const resolvers = {
-  Date: dateScalar,
+  // Date: dateScalar,
   Query: {
     getPolicies: () => {
       return policies;

@@ -8,11 +8,10 @@ export const typeDefs = gql`
   }
 
   enum PolicyStatus {
-    Active
-    Pending
-    Cancelled
-    Dropped
-    out
+    ACTIVE
+    PENDING
+    CANCELLED
+    DROPPED_OUT
   }
 
   scalar Date
