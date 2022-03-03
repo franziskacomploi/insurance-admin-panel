@@ -25,3 +25,11 @@
 .edit {
   @apply text-indigo-600 hover:text-indigo-900;
 }
+
+.pagination-box {
+  @apply bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium;
+}
+
+.pagination-box-active {
+  @apply bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium;
+}
