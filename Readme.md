@@ -1,4 +1,4 @@
-# Feather - Fullstack Engineer code challenge
+# Fullstack Code Project
 
 In this code challenge you'll need to create a simple admin panel from scratch. It would need to have a single table view to list insurance policies showcasing all the various field they may have.
 
@@ -6,7 +6,7 @@ The [frontend](./frontend) part would communicate with the [backend](./backend) 
 
 We've generated some boilerplate for you to get started.
 
-## Solution
+## The Code
 
 Part 1
 
@@ -22,21 +22,12 @@ Part 2
 
 Part 3
 
+- Data is displayed in a Table View
+- Sorting on each table column is implemented
+- Pagination is added to the table
 - Frontend is getting polished 🚀
 
 ## Task
-
-### What we'll be looking at
-
-- How you write idiomatic code.
-- How you deal with UI/UX.
-- How you navigate the requirements.
-- How you test & write testable code.
-- How you package the code.
-- How you deal with the security concerns.
-- How you communicate with your fellow programmers.
-
-### Tasks
 
 1. On the [backend](./backend), change the GraphQL schema to reflect the [Data structure](#Data-structure)
 2. On the [frontend](./frontend), fetch the data returned by the GraphQL endpoint with the help of the [Apollo client](https://www.apollographql.com)
