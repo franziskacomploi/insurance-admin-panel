@@ -9,3 +9,5 @@ export const TABLE_TITLES = [
   { name: "Start Date", data: "startDate" },
   { name: "End Date", data: "endDate" },
 ];
+
+export const TABLE_PER_PAGE = 5;

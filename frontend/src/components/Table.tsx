@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { ITableData, ITableRowData } from "../types/Table";
-import { TABLE_TITLES } from "../util/constants/table";
+import { TABLE_PER_PAGE, TABLE_TITLES } from "../util/constants/table";
 import { compare } from "../util/helpers";
 import TableRow from "./TableRow";
 
 const Table = ({ tableRows }: ITableData) => {
   const [sortedField, setSortedField] = useState(" ");
   const [currentPage, setCurrentPage] = useState(0);
-  const tableRowView = [[...tableRows].slice(0, 5), [...tableRows].slice(5, 10)];
+  const tableRowView = [[...tableRows].slice(0, TABLE_PER_PAGE), [...tableRows].slice(5, TABLE_PER_PAGE * 2)];
 
   const handlePagination = (val: number) => {
     setCurrentPage(val-1);
