@@ -1,16 +1,17 @@
+import { table } from "console";
 import React, { useState } from "react";
 import { ITableData, ITableRowData } from "../types/Table";
 import { TABLE_PER_PAGE, TABLE_TITLES } from "../util/constants/table";
-import { compare } from "../util/helpers";
+import { compare, getPageItems } from "../util/helpers";
 import TableRow from "./TableRow";
 
 const Table = ({ tableRows }: ITableData) => {
   const [sortedField, setSortedField] = useState(" ");
   const [currentPage, setCurrentPage] = useState(0);
-  const tableRowView = [[...tableRows].slice(0, TABLE_PER_PAGE), [...tableRows].slice(5, TABLE_PER_PAGE * 2)];
+  const tableRowView = getPageItems(tableRows, TABLE_PER_PAGE)
 
   const handlePagination = (val: number) => {
-    setCurrentPage(val-1);
+    setCurrentPage(val);
   }
 
   const sortDataBy = (data: ITableRowData[], byKey: string) => {
@@ -91,7 +92,7 @@ const Table = ({ tableRows }: ITableData) => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div className="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg">
           <table className="min-w-full divide-y divide-gray-200">
@@ -126,8 +127,9 @@ const Table = ({ tableRows }: ITableData) => {
         </div>
       </div>
       <div className="flex flex-row ml-10">
-        <button type="button" className={`pagination-box ${currentPage === 0 && 'pagination-box-active'}`} onClick={()=>{handlePagination(1)}}>1</button>
-        <button type="button" className={`pagination-box ${currentPage === 1 && 'pagination-box-active'}`} onClick={()=>{handlePagination(2)}}>2</button>
+        {tableRowView.map((_,i) => {
+          return <button type="button" className={`pagination-box ${currentPage === i && 'pagination-box-active'}`} onClick={()=>{handlePagination(i)}}>{i + 1}</button>
+        })}
       </div>
     </div>
   );
