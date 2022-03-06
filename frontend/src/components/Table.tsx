@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ITableData, ITableRowData } from "../types/Table";
 import { TABLE_PER_PAGE, TABLE_TITLES } from "../util/constants/table";
 import { compare, getPageItems } from "../util/helpers";
+import PaginationBox from "./PaginationBox";
 import TableRow from "./TableRow";
 
 const Table = ({ tableRows }: ITableData) => {
@@ -136,7 +137,7 @@ const Table = ({ tableRows }: ITableData) => {
       </div>
       <div className="flex flex-row ml-10">
         {tableRowView.map((_,i) => {
-          return <button type="button" className={`pagination-box ${currentPage === i && 'pagination-box-active'}`} onClick={()=>{handlePagination(i)}}>{i + 1}</button>
+          return <PaginationBox currentPage={currentPage} i={i} onClick={()=>{handlePagination(i)}} />
         })}
       </div>
     </div>

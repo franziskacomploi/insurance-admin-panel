@@ -1,4 +1,4 @@
-import { Key } from "react";
+import { Key, MouseEventHandler } from "react";
 
 enum InsuranceType {
   Liability,
@@ -49,4 +49,10 @@ export interface ITableRowData {
 
 export interface ITableData {
   tableRows: ITableRowData[];
+}
+
+export interface IPaginationBoxProps {
+  currentPage: number;
+  i: number;
+  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
 }
