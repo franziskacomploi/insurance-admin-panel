@@ -6,7 +6,7 @@ import TableRow from "./TableRow";
 
 const Table = ({ tableRows }: ITableData) => {
   const [sortedField, setSortedField] = useState(" ");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const tableRowView = [[...tableRows].slice(0, 5), [...tableRows].slice(5, 10)];
 
   const handlePagination = (val: number) => {
