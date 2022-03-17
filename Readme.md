@@ -73,3 +73,7 @@ InsuranceType can be of `Liability`, `Household`, `Health`
 #### PolicyStatus
 
 PolicyStatus can be of `Active`, `Pending`, `Cancelled` and `Dropped out`
+
+## Challenge Original
+
+This challenge can be found here: https://github.com/getPopsure/fullstack-engineer-challenge
