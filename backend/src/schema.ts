@@ -1,4 +1,4 @@
-import { gql } from "apollo-server";
+import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   enum InsuranceType {
@@ -37,5 +37,9 @@ export const typeDefs = gql`
   type Query {
     getPolicies: [Policy]
     getPolicy(id: ID!): Policy
+  }
+
+  type Mutation {
+    updatePolicy(policyName: String): String
   }
 `;

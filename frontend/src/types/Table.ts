@@ -1,4 +1,4 @@
-import { Key, MouseEventHandler } from "react";
+import { Key, MouseEventHandler } from 'react';
 
 enum InsuranceType {
   Liability,
@@ -17,14 +17,14 @@ export interface ITableRow {
   tableRow?: {
     id: Key;
     customer: {
-      firstName: String;
-      lastName: String;
+      firstName: string;
+      lastName: string;
       dateOfBirth: Date;
     };
-    provider: String;
+    provider: string;
     insurance: InsuranceType;
     status: PolicyStatus;
-    policyNumber: String;
+    policyNumber: string;
     startDate: Date;
     endDate: Date;
     createdAt: Date;

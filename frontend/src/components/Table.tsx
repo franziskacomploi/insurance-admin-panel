@@ -137,7 +137,7 @@ const Table = ({ tableRows }: ITableData) => {
       </div>
       <div className="flex flex-row ml-10">
         {tableRowView.map((_,i) => {
-          return <PaginationBox currentPage={currentPage} i={i} onClick={()=>{handlePagination(i)}} />
+          return <PaginationBox key={i} currentPage={currentPage} i={i} onClick={()=>{handlePagination(i)}} />
         })}
       </div>
     </div>

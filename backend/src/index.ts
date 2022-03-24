@@ -1,14 +1,14 @@
-import { ApolloServer } from "apollo-server";
-import { typeDefs } from "./schema";
-import { policies } from "./mockData";
+import { ApolloServer } from 'apollo-server';
+import { typeDefs } from './schema';
+import { policies } from './mockData';
 
 // Custom Date Scalar from Docs - https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/ + including Typescript
 
-const { GraphQLScalarType, Kind } = require("graphql");
+const { GraphQLScalarType, Kind } = require('graphql');
 
 const dateScalar = new GraphQLScalarType({
-  name: "Date",
-  description: "Date custom scalar type",
+  name: 'Date',
+  description: 'Date custom scalar type',
   serialize(value: Date): Number {
     return value.getTime(); // Convert outgoing Date to integer for JSON
   },
@@ -31,6 +31,12 @@ const resolvers = {
     },
     getPolicy: (args: any) => {
       return policies.find((policy) => policy.id === args.id);
+    },
+  },
+  Mutation: {
+    updatePolicy: async (_: never, { policyName }: { policyName: string }) => {
+      // await
+      return policyName;
     },
   },
 };
